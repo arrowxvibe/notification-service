@@ -41,6 +41,14 @@ public class NotificationService {
         return repository.findByStatusAndSendAtBefore(NotificationStatus.SCHEDULED, LocalDateTime.now());
     }
 
+    public void deleteNotification(UUID id) {
+        repository.deleteById(id);
+    }
+
+    public List<Notification> getAllNotifications() {
+        return repository.findAll();
+    }
+
     public void schedule(NotificationRequest request) {
         Notification notification = new Notification();
         notification.setId(UUID.randomUUID());
